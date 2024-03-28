@@ -1,8 +1,7 @@
 # ignore lib folder
-/libib/
-
+Lib/
 # ignore Include and Scripts
-/Include/
-/Scripts/
+Include/
+Scripts/
 
 pyvenv.cfg 
