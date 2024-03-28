@@ -1,0 +1,61 @@
+{% extends 'base.html' %} 
+
+{% block header %}
+  <div class="row mt-3">
+  <div class="col-8">
+    <a href="/criteria/" class="tag-btn">Criteria Input </a>
+    <a href="/criteria/list" class="tag-btn">Criteria List</a>
+    <a href="/alternative/" class="tag-btn">Alternative Input </a>
+    <a href="/alternative/list" class="tag-btn">Alternative List </a>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <h1 class="mt-4 text-center">
+        Criteria Input
+    </h1>
+
+    <div class="container mt-5 d-flex justify-content-center">
+        <form method="POST" action="{% if item %}{% url 'submit_criteria_form' item.id %}{% else %}{% url 'submit_criteria_form' %}{% endif %}">
+            {% csrf_token %}
+            <label for="code" class="form-label">{{ form.code.label}}</label>
+            {{ form.code}}
+
+            <label for="name" class="form-label mt-2">{{ form.name.label}}</label>
+            {{ form.name}}
+
+            <label for="attribute" class="form-label mt-2">{{ form.attribute.label}}</label>
+            <select class="form-select" name="attribute">
+              {% if item %}
+              <option value="{{ item.attribute }}" {% if item.attribute %}selected{% endif %}>
+                {% if item.attribute == "benefit" %} Benefit
+                {% elif item.attribute == "cost" %} Cost
+                {% endif %}
+              </option>
+              {% endif %}
+              <option value="benefit">Benefit</option>
+              <option value="cost">Cost</option>
+            </select>
+
+            <label for="weight" class="form-label mt-2">{{ form.weight.label}}</label>
+            {{ form.weight}}
+
+            <div class="row">
+                <div class="col-6">
+                  <input type="submit" class="btn-submit" value="Save" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <input
+                    type="submit"
+                    class="btn-cancel"
+                    value="Cancel"
+                    onclick="window.location.href='{% url 'home' %}'"
+                  />
+                </div>
+              </div>
+        </form>
+    </div>
+{% endblock %}

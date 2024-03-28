@@ -1,0 +1,43 @@
+{% load static %} 
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static "app.css"%}"> 
+  {% load bootstrap5  %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+
+</head>
+<body>
+
+<div class="container">
+
+  <ul class="nav bg-dark">
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/students">Students</a>
+    </li>  
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/criteria">Criteria</a>
+    </li> 
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/result">Result</a>
+    </li> 
+  </ul>
+
+  {% block header%}
+  {% endblock %}
+
+  {% block content %}
+  {% endblock %}
+
+  {% block scripts %}
+  {% endblock%}
+</div>
+
+</body>
+</html>

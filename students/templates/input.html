@@ -1,0 +1,47 @@
+{% extends 'base.html' %} 
+
+{% block header %}
+  <div class="row mt-3">
+  <div class="col-6">
+    <a href="/students/" class="tag-btn">Input</a>
+    <a href="/students/list" class="tag-btn">List</a>
+  </div>
+</div>
+{% endblock %}
+
+{%block content %}
+<h1 class="mt-4 text-center">
+  {% if item%} Edit {{item.name}}
+  {% else %} Input Student
+  {% endif %}
+</h1>
+
+<div class="container mt-5 d-flex justify-content-center">
+  <form method="POST" action="{% if item %}{% url 'submit_student_form' item.id %}{% else %}{% url 'submit_student_form' %}{% endif %}">
+    {% csrf_token %}
+    <label for="code" class="form-label">{{form.code.label}}</label>
+    {{form.code}}
+    <label for="name" class="form-label mt-3">{{form.name.label}}</label>
+    {{form.name}}
+
+    <div class="row">
+        <div class="col-6">
+          <input type="submit" class="btn-submit" value="Save" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <input
+            type="submit"
+            class="btn-cancel"
+            value="Cancel"
+            onclick="window.location.href='{% url 'home' %}'"
+          />
+        </div>
+      </div>
+  </form>
+
+  
+</div>
+
+{% endblock %}

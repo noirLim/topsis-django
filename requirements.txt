@@ -1,0 +1,6 @@
+Django  
+django-bootstrap-v5
+openpyxl
+pandas 
+psycopg2
+xhtml2pdf  

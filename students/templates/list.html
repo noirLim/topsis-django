@@ -1,0 +1,37 @@
+{% extends 'base.html' %} 
+
+{% block header %}
+<div class="row mt-3">
+    <div class="col-6">
+      <a href="/students/" class="tag-btn">Input</a>
+      <a href="/students/list" class="tag-btn">List</a>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 d-flex justify-content-center">
+    <table style="width:60%;">
+        <thead>
+          <tr>
+              {% for field_name, field_label in custom_labels.items %}
+                 <th>{{ field_label }}</th>
+              {% endfor %}
+              <th>Edit </th>
+              <th>Delete </th>
+          </tr>
+        </thead>
+       <tbody>
+          {% for item in data %}
+          <tr>
+              <td>{{ item.code}}</td>
+              <td>{{ item.name}}</td>
+              <td><a href="{% url 'get_student_by_id' item.id %}" class="btn btn-secondary d-block mx-auto w-100">Edit</a></td>
+              <td><a href="{% url 'delete_student_by_id' item.id %}" class="btn btn-danger d-block mx-auto w-100">Delete</a></td>
+          </tr>
+        {% endfor %}
+        </tbody> 
+      </table>
+</div>
+  
+{% endblock%}

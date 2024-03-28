@@ -1,0 +1,16 @@
+{% load static %} 
+
+<html>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static "app.css"%}"> 
+  {% load bootstrap5  %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+
+
+  <body>
+    {% block content %}
+    {% endblock %}
+
+  </body>
+</html>
