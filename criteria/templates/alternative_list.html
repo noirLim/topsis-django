@@ -40,10 +40,10 @@
 
 <div class="container mt-5 d-flex justify-content-center">
   {% if data.has_previous %}
-  <a href="{% url 'list'%}?page={{data.previous_page_number}}" class="btn btn-secondary d-block mx-1 w-25">Previous Page</a>
+  <a href="{% url 'list_alt'%}?page={{data.previous_page_number}}" class="btn btn-secondary d-block mx-1 w-25">Previous Page</a>
   {% endif %}
   {% if data.has_next %}
-  <a href="{% url 'list'%}?page={{data.next_page_number}}" class="btn btn-danger d-block mx-1 w-25">Next Page</a>
+  <a href="{% url 'list_alt'%}?page={{data.next_page_number}}" class="btn btn-danger d-block mx-1 w-25">Next Page</a>
   {% endif %}
 </div>
   
